@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "625899625373",
+    "project_id": "beamapp-a16fe",
+    "storage_bucket": "beamapp-a16fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625899625373:android:b4c6af3df686479f7e6d74",
+        "android_client_info": {
+          "package_name": "com.example.beam_frontend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625899625373-6p9madlg4mfkli4qmoq4qs05ms8821p8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeS9DOh5aEu_uran8_rgBn5pIx3JgmSg8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625899625373-6p9madlg4mfkli4qmoq4qs05ms8821p8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "625899625373-tp6hthcr9kntne974rf12jmel89ql9j3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.beamFrontend"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
