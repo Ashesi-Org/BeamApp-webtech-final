@@ -84,3 +84,80 @@ Future<Map<String, String>> showModal(BuildContext context) async {
   );
   return userInfo;
 }
+
+Future<Map<String, String>> showPostModal(BuildContext context) async {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  Map<String, String> userInfo = {};
+  await showModalBottomSheet(
+    context: context,
+    builder: (BuildContext context) {
+      return Form(
+        key: _formKey,
+        child: Container(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text('Enter your post:'),
+              TextFormField(
+                decoration: const InputDecoration(
+                  hintText: 'Post',
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your post';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  userInfo['postContent'] = value!;
+                },
+              ),
+              const Text('Enter your email:'),
+              TextFormField(
+                decoration: const InputDecoration(
+                  hintText: 'Email',
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your email';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  userInfo['email'] = value!;
+                },
+              ),
+               const Text('Enter your name:'),
+              TextFormField(
+                decoration: const InputDecoration(
+                  hintText: 'Name',
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your name';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  userInfo['name'] = value!;
+                },
+              ),
+              SizedBox(height: 16.0),
+              ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                    Navigator.pop(context);
+                  }
+                },
+                child: Text('Submit'),
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+  return userInfo;
+}

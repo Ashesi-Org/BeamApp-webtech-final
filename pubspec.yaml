@@ -43,6 +43,7 @@ dependencies:
   intl: ^0.18.1
   firebase: ^9.0.3
   firebase_core: ^2.10.0
+  cloud_firestore: ^4.5.2
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,7 @@ flutter:
   assets: 
     - images\Verdansk1.png
     - images/Batman trilogy III.png
+    - images\SacTown.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

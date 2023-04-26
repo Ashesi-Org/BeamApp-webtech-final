@@ -1,16 +1,20 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Post{
   final String postContent;
   final String timePosted;
   final String datePosted;
   final String studentID;
   final String studentName;
+  final Timestamp timeStamp;
 
 
   Post({required this.postContent, 
   required this.timePosted, 
   required this.datePosted, 
   required this.studentID,
-  required this.studentName
+  required this.studentName,
+  required this.timeStamp
   });
 
   factory Post.fromJson(Map<String, dynamic> json) {
@@ -19,7 +23,8 @@ class Post{
       timePosted: json['time_posted'],
       datePosted: json['date_posted'],
       studentID:json['student_ID'], 
-      studentName:json['name']
+      studentName:json['name'],
+      timeStamp:json["time_stamp"]
     );
   }
 
@@ -29,5 +34,6 @@ class Post{
         'date_posted':datePosted,
         'student_ID':studentID,
         'name': studentName,
+        'time_stamp': timeStamp
       };
 }

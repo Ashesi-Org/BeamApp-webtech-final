@@ -22,7 +22,6 @@ class viewProfile extends StatelessWidget {
   
 
  @override
-
 Widget build(BuildContext context) {
 
   //Student details fetched from the database

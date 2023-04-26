@@ -45,7 +45,30 @@ import 'package:beam_frontend/editProfile.dart';
 import 'package:beam_frontend/Post.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:beam_frontend/feed.dart';
 
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    // ignore: prefer_const_constructors
+    options: FirebaseOptions(
+      apiKey: '',
+      appId: '',
+      messagingSenderId: '', 
+      projectId: 'beamapp-a16fe' ),
+  );
+  runApp(BeamApp());
+}
+
+class BeamApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: WelcomeScreen(),
+    );
+  }
+}
 
 Future<void> initializeFirebase() async {
   await Firebase.initializeApp(
@@ -57,7 +80,7 @@ Future<void> initializeFirebase() async {
 // ignore: non_constant_identifier_names
 
 
-void main()=> runApp(const CreateAccountApp());
+// void main()=> runApp(const CreateAccountApp());
 
 class CreateAccountApp extends StatelessWidget {
   const CreateAccountApp();
@@ -70,6 +93,8 @@ class CreateAccountApp extends StatelessWidget {
         '/': (context) => const WelcomeScreen(),
         '/signup': (context) => const CreateAccountScreen(),
         '/viewProfile': (context) => const viewProfile(),
+        '/viewFeed': (context) => const feedView(),
+
 
       }
     );
@@ -107,9 +132,23 @@ class WelcomeScreen extends StatelessWidget {
 
 @override
 Widget build(BuildContext context) {
-  return Scaffold(
-    body: Center (
+  
+  return MaterialApp(
+ 
+home: Scaffold(
+   body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.purple, Colors.blue],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+    
+    child: Center (
+      
       child: Column(
+        
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
@@ -121,9 +160,11 @@ Widget build(BuildContext context) {
              mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
-                onPressed: (
-                  
-                ) {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => feedView()),
+                    );
+                },
                 child: Text('Go to Feed'),
                 style: ButtonStyle(
                 minimumSize: MaterialStateProperty.all(const Size(200, 75)), 
@@ -201,7 +242,11 @@ Widget build(BuildContext context) {
         ],
       ),
     ),
+  ),
+   
+  ),
   );
+  
 }
 
   
@@ -251,7 +296,7 @@ List<String> _residenceOptions = ['On-campus', 'Off-campus'];
 List<String> _majorOptions = ['Computer Science', 'Computer Engineering', 'Electrical Engineering', 'Mechanical Engineering', 'Management Information Systems', 'Business Administration'];
 String? _selectedMajor;
 
-Color _dropDownColor = Colors.blue;
+Color _dropDownColor = Colors.purple;
 
 //Variables storing form field data
 final _signUpInfo = GlobalKey<FormState>();
@@ -471,7 +516,7 @@ void _showWelcomeScreen(){
             }).toList(),
               decoration:const InputDecoration(
                 filled:true,
-                fillColor: Colors.blue
+                fillColor: Colors.purple
               ),
               onSaved: (value){
                 _studentResidence = value!;
@@ -502,7 +547,7 @@ void _showWelcomeScreen(){
              hint: const Text('Select your major'),
              decoration:const InputDecoration(
               filled:true,
-              fillColor: Colors.blue,
+              fillColor: Colors.purple,
              ),
              onSaved: (value){
               _studentMajor = value!;
@@ -571,7 +616,7 @@ void _showWelcomeScreen(){
                 backgroundColor: MaterialStateProperty.resolveWith(
                   (Set<MaterialState> states){
                     return states.contains(MaterialState.disabled)
-                    ? null : Colors.blue;
+                    ? null : Colors.purple;
                   }
                 ),
               ),
